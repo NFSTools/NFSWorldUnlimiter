@@ -95,7 +95,7 @@ CarTypeInfo** CarTypeInfoArrayPtr = nullptr;
 
 signed int __stdcall hook_GetCarTypeByHash(unsigned int hash)
 {
-	printf("GetCarTypeByHash(0x%08x)\n", hash);
+	//printf("GetCarTypeByHash(0x%08x)\n", hash);
 	CarTypeInfo* carArray = *CarTypeInfoArrayPtr;
 	for (int i = 0; i < 65536; i++)
 	{
@@ -180,10 +180,10 @@ DWORD WINAPI InitializeASI(LPVOID)
 	Memory::writeJMP(0x3156EE, (DWORD)__carHashLoadFix, false);
 
 	// experimental
-	AllocConsole();
-	static FILE* pStdOut = nullptr;
-	freopen_s(&pStdOut, "CONOUT$", "w", stdout);
-	printf("NFS World Unlimiter\n");
+	//AllocConsole();
+	//static FILE* pStdOut = nullptr;
+	//freopen_s(&pStdOut, "CONOUT$", "w", stdout);
+	//printf("NFS World Unlimiter\n");
 	CarTypeInfoArrayPtr = (CarTypeInfo**)Memory::makeAbsolute(0xD20F2C - 0x400000);
 	orig_sub_7154B0 = (sub_7154B0_t)Memory::makeAbsolute(0x3154B0);
 	orig_GetCarTypeByHash = (GetCarTypeByHash_t)Memory::makeAbsolute(0x30BA10);
@@ -211,7 +211,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 	case DLL_THREAD_DETACH:
 		break;
 	case DLL_PROCESS_DETACH:
-		FreeConsole();
+		//FreeConsole();
 		break;
 	}
 	return TRUE;
